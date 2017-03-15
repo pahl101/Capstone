@@ -1,0 +1,110 @@
+$breakpoints: (
+	mobile: 640px,
+	tablet: 768px,
+	laptop: 1024px,
+	pc: 1224px,
+	large: 1824
+);
+
+$map-colors: (
+	body: (
+		bg: #E9E9E9,
+		tx: black
+	)
+);
+
+@function get-color($section, $propierty) {
+	@if map-has-key($map-colors, $section) {
+		$section-propierties: map-get($map-colors, $section);
+		@if map-has-key($section-propierties, $propierty) {
+			@return map-get($section-propierties, $propierty);
+		}
+	}
+}
+
+@mixin from-mq($mediaquery) {
+	$type-of: type-of($mediaquery);
+	@if map-has-key($breakpoints, $mediaquery) {
+		@media all and (min-width: #{map-get($breakpoints, $mediaquery)}) {
+			@content;
+		}
+	} @else if $type-of == number {
+		$unit: unit($mediaquery);
+		@if $unit == 'px' {
+			@media all and (min-width: $mediaquery) {
+				@content;
+			}
+		} @else {
+			@error('The media-query \'#{$mediaquery}\' must have media in \'px\' unit');
+		}
+	} @else {
+		@error('The breakpoint \'#{$mediaquery}\' isn\'t a valid breakpoint name');
+	}
+}
+
+@import "https://fonts.googleapis.com/css?family=Roboto";
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Roboto", sans-serif;
+	color: get-color(body, tx);
+	background: get-color(body, bg);
+}
+
+.titulo {
+  text-align: center;
+}
+
+.rejilla {
+	padding: 1em 3em;
+	column-count: 1;
+	column-fill: auto;
+	column-gap: 0;
+	
+	@include from-mq(mobile) {
+		column-count: 3;
+	}
+
+	@include from-mq(tablet) {
+		column-count: 4;
+	}
+
+	@include from-mq(laptop) {
+		column-count: 5;
+	}
+
+	@include from-mq(pc) {
+		column-count: 6;
+	}
+}
+
+.caja {
+	background: #FFF; 
+	column-break-inside: avoid;
+	display: inline-block;
+	word-wrap: break-word;
+	margin: 6px;
+	border-radius: 6px;
+	box-shadow: 0 1px 2px black;
+
+	img {
+		display: block;
+		position: relative;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		border-radius: 6px 6px 0 0;
+		border-bottom: 1.5px solid #E7E7E7;
+	}
+
+	p {
+		font-size:  13px;
+		line-height: 17px;
+		color: #333;
+		margin: 5px 0;
+		padding: 5px 12px; 
+	}
+}
