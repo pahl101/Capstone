@@ -32,7 +32,7 @@
           <label>Choose your profile picture:</label>
           <form action="/action_page.php">
             <input type="file" name="pic" accept="image/*">
-          </form><br><br>
+            <br><br>
           
           <label>Please enter the following information about your acting preferences:</label>
           <label> </label><br>
@@ -126,12 +126,17 @@
           <input type="tel" phone2="phone2">
         
         </fieldset>
-        <button type="submit">Submit</button>
+        <button onclick="goBack()">Submit</button>
       </form>
       
     </body>
-</html>
   
-  
-</body>
+  </body>
+
+  <script>function goBack() 
+  {
+    window.history.back();
+  }
+  </script>
+
 </html>

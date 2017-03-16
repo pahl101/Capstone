@@ -118,13 +118,17 @@
                <input type="button" value="Delete Role" onClick="removeElement('dynamicInput');">
 
           </fieldset>
-        <button type="submit">Submit</button>
+        <button onclick="goBack()">Submit</button>
       </form>
 
       
     </body>
+
+  <script>function goBack() 
+  {
+    window.history.back();
+  }
+
+  </script>
 </html>
-  
-  
-</body>
-</html>
+
