@@ -52,22 +52,22 @@ if($_POST['pressed'] == 1 )
 	    }
 
 	    if ($userAvailable == true){
-	  //   	$resultStudent = $conn->prepare('CALL addStudent(?,?)');
-			// $resultStudent->bind_param('is', $_SESSION['hashedEmail'], $_SESSION['userPassword']);
+	    	$resultStudent = $conn->prepare('CALL addStudent(?,?)');
+			$resultStudent->bind_param('is', $_SESSION['hashedEmail'], $_SESSION['userPassword']);
 
-			// $resultStudent->execute();
+			$resultStudent->execute();
 
-			// $resultStudent->close();
+			$resultStudent->close();
 	  header('Location: myProfile.php');
 	    }
 	}
 	else {
-		// $resultStudent = $conn->prepare('CALL addStudent(?,?)');
-		// $resultStudent->bind_param('is', $_SESSION['hashedEmail'], $_SESSION['userPassword']);
+		$resultStudent = $conn->prepare('CALL addStudent(?,?)');
+		$resultStudent->bind_param('is', $_SESSION['hashedEmail'], $_SESSION['userPassword']);
 
-		// $resultStudent->execute();
+		$resultStudent->execute();
 
-		// $resultStudent->close();
+		$resultStudent->close();
 		header('Location: myProfile.php');
 	}
 	$result->close();

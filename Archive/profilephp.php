@@ -112,9 +112,9 @@ if($_POST['submit'] == 1 )
 	$res2->execute();
 
 	$res2->close();
-
+	$aphone = 1231231234;
 	$res3 = $conn->prepare("CALL AddTest3(?,?,?,?)");
-	$res3->bind_param('issi',$_SESSION['hashedEmail'], $_SESSION['userName'], $_SESSION['userEmail'], $_SESSION['phoneNumber']);
+	$res3->bind_param('issi',$_SESSION['hashedEmail'], $_SESSION['userName'], $_SESSION['userEmail'], $aphone);
 	$res3->execute();
 
 	$res3->close();

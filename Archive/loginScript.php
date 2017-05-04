@@ -37,60 +37,34 @@ if($_POST['pressed2'] == 1 )
 
 	if ($exists == True) {
 
-		
-		if($resultInfo = $conn->prepare("CALL ReturnActorInfo(?)")){
-		//$resultInfo = $conn->query("SELECT * FROM ActorRef");
+		$results = $conn->query("CALL ReturnActorInfo($hashedPass)");
+          if ($results->num_rows > 0) {
 
-		$resultInfo->bindParam(1, $_SESSION['hashedEmail'], PDO::PARAM_INT|PDO::PARAM_INPUT_OUTPUT);
-		//$resultInfo->bindParam(1, $_SESSION['hashedEmail'], PDO::PARAM_STR|PDO::PARAM_INPUT_OUTPUT, 4000); 
-		$resultInfo->execute();
+          	while($row = $results->fetch_assoc()) {
 
-		$resultInfo->store_result();
+          		$_SESSION['userName'] = $row['Name'];
+				$_SESSION['userEmail'] = $row['Email'];
+				$_SESSION['phoneNumber'] = $row['Num'];
 
-		$num_of_rows = $stmt->num_rows;
+				echo $_SESSION['userName'];
+				echo $_SESSION['userEmail'];
+				echo $_SESSION['phoneNumber'];
 
-		$stmt->bind_result($id, $name, $email, $number);
-
-		while ($stmt->fetch()) {
-			$theid = $id;
-			$_SESSION['userName'] = $name;
-			$_SESSION['userEmail'] = $email;
-			$_SESSION['phoneNumber'] = $number;
-	
-	   
-		   echo $_SESSION['userName'];
-		   echo $_SESSION['userEmail'];
-		   echo $_SESSION['phoneNumber'];
-		}
-	}else{
-   //error !! don't go further
-   var_dump($resultInfo);
-}
-$resultInfo->close();
-
-// 		if ($result->num_rows > 0) {
-// 			echo "...";
-//     // output data of each row
-//     while($row = $result->fetch_assoc()) {
-//         echo "id: " . $row["IDRef"]. " - Name: " . $row["RefName"]. " " . $row["RefEmail"]. " ". $row["RefNum"] . "<br>";
-//     }
-// } else {
-//     echo "0 results";
-//     echo $hashedPass;
-// }
-
+                
+           	} 
+          }
 
 		$isCorrect = "True";
-		echo $isCorrect;
+		// echo $isCorrect;
 		//header('Location: mainPage.php');
 	}
 	else{
 		$isCorrect = "False";
-		echo $isCorrect;
+		//echo $isCorrect;
 		//header('Location: invalidLogin.php');
 	}
 	//echo ($_SESSION['hashedEmail']);
-	$result->close();
+	//$result->close();
 	$conn->close();
 
 ?>
