@@ -5,12 +5,12 @@
 <?php
 session_start();
 ?>
-  
-  <center><img src="images/chapmanlogo.png" alt="Chapman Logo" align="center" style="width:750px;height:100px;"></center>
+
   <h2> </h2>
   <center><h2><img src="images/CHAPCAST.png" alt="Chapcast" style="width: 350px; height: 50px"></h2></center>
   <meta charset="UTF-8">
-  <title>Chapman Casting Portal Login</title>
+  <title>ChapCast</title>
+
   <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -90,7 +90,6 @@ session_start();
             </label>
             <input name="userPassword" type="password"required autocomplete="off"/><br>
           
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
 
           <BUTTON TYPE="submit" VALUE="1" class="button button-block" name="pressed2">Log In</BUTTON>
           <!-- <center><a <button class="button button-block" href="file:///Users/ceferinoj/Desktop/Capstone/ActorView/index.html">Log In</button></a></center> -->

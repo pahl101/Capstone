@@ -2,12 +2,10 @@
 <html >
 <head>
 
-  
-  <center><img src="images/chapmanlogo.png" alt="Chapman Logo" align="center" style="width:750px;height:100px;"></center>
   <h2> </h2>
   <center><h2><img src="images/CHAPCAST.png" alt="Chapcast" style="width: 350px; height: 50px"></h2></center>
   <meta charset="UTF-8">
-  <title>Chapman Casting Portal Login</title>
+  <title>ChapCast</title>
   <link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,300,600' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 

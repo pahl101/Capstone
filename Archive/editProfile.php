@@ -2,7 +2,7 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Chapman Casting Portal</title>
+    <title>ChapCast</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
@@ -33,17 +33,12 @@
         
   <div class = "content">
 
-      <center><h1><img src="images/CHAPCAST.png" alt="Chapcast" style="width: 350px; height: 50px"></h1></center>
-
       <div class="topnav" id="myTopnav">
         <a href="logoutphp.php" >Log Out</a>
-        <a href="editProfile.php" >Settings</a> <!--Opens Profile Settings Page-->
         <a href="profilePage.php">My Profile</a>
         <a href="directorView.php" >Director</a>
         <a href="mainPage.php" >Actor</a>
     </div>
-
-    <center><img src="images/logo.png" alt="Chapman Logo" align="center" style="width:300px;height:50px;"></center>    
 
       <form action="index.php" method="post">
       

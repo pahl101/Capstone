@@ -71,7 +71,7 @@ input.gsc-search-button {
   padding: 0 8px;
   height: 20px;
   min-width: 54px;
-  background-color: #CECECE;
+  background-color: #990026;
   border: 1px solid #666;
   border-radius: 2px;
   -moz-border-radius: 2px;
@@ -511,5 +511,3 @@ nav ul li a
 {
   box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
 }
-
-

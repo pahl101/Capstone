@@ -34,13 +34,9 @@
 
       </ul> 
     </nav>
-
+    </br>
 
 	<div class = "content">
-
-    <div>
-      
-    </div>
 
       <div class="topnav" id="myTopnav">
         <a href="logoutphp.php" >Log Out</a>
@@ -48,6 +44,8 @@
         <a href="">Casting Calls</a>
     		<a href="directorView.php">Actors</a>
   	  </div>
+
+      <br><br/>
 
       <div class="rejilla">
         <a href="file:///Users/ceferinoj/Desktop/Capstone/NewCastingCall/index.php">

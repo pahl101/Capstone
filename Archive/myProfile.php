@@ -2,14 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Chapman Casting Portal</title>
+    <title>ChapCast</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-
     
         <link rel="stylesheet" href="css/default.css">
 
-    
   </head>
 
   <body>
@@ -32,8 +30,6 @@
     </nav>
         
   <div class = "content">
-
-      <center><h1><img src="images/CHAPCAST.png" alt="Chapcast" style="width: 350px; height: 50px"></h1></center>
 
       <div class="topnav" id="myTopnav">
         <!--Opens Profile Settings Page-->
@@ -147,15 +143,15 @@
 
           </div>
 
-           <form action="profilephp.php" method="post" target="_self">
+        <form action="profilephp.php" method="post" target="_self">
+
           <center><button buttonblock VALUE="1" name ='submit'>Submit</button></center>
+
         </form>
         
         </fieldset>
         
       </form>
-
-
 
     </div>
     

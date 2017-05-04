@@ -7,13 +7,15 @@ html {
 }
 
 body {
-  background: #c1bdba;
   font-family: 'Arial', sans-serif;
+  color: black;
+  background-color: #DCDCDC;
+  background-image: url("../images/window_pattern.png");
 }
 
 a {
   text-decoration: none;
-  color: #930505;
+  color: #FFFFFF;
   -webkit-transition: .5s ease;
   transition: .5s ease;
 }
@@ -59,7 +61,7 @@ a:hover {
   color: #ffffff;
 }
 .tab-group .active a {
-  background: #930505;
+  background: #990026;
   color: #ffffff;
 }
 
@@ -69,7 +71,7 @@ a:hover {
 
 h2{
   text-align: center;
-  color: darkred;
+  color: #990026;
   font-weight: 700;
   font-size: 60px;
   margin: 0 0 40px;
@@ -96,7 +98,7 @@ label {
 }
 label .req {
   margin: 2px;
-  color: #930505;
+  color: #990026;
 }
 
 label.active {
@@ -129,7 +131,7 @@ input, textarea {
 }
 input:focus, textarea:focus {
   outline: 0;
-  border-color: #930505;
+  border-color: #990026;
 }
 
 textarea {
@@ -165,7 +167,7 @@ textarea {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  background: #930505;
+  background: #990026;
   color: #ffffff;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
