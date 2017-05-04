@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     
-        <link rel="stylesheet" href="css/styleDirector.css">
+        <link rel="stylesheet" href="css/default.css">
 
     
   </head>
@@ -38,7 +38,6 @@
       <div class="topnav" id="myTopnav">
 
         <a href="logoutphp.php" >Log Out</a>
-        <a href="editProfile.php">Settings</a> <!--Opens Profile Settings Page-->
         <a href="profilePage.php">My Profile</a>
         <a href="mainPage.php">Casting Calls</a>
         <a href="directorView.php">Actors</a>

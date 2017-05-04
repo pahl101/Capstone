@@ -1,0 +1,188 @@
+/* For Welcome Dropdown */
+
+#welcome .content-container .message .copy a{color:white; text-decoration: underline;}
+
+.no-js #welcome { display: none !important; }
+
+#welcome, #welcome.open { display: inline-block; position: static; width: 100%; }
+#welcome .overlay { display: none; }
+
+#welcome .content-container { display: none; overflow: auto; }
+#welcome.open .content-container { display: inline-block; width: 100%; background: #fff;}
+
+#welcome .sp { display: none; }
+#welcome.open .sp { display: block; height: 44px;}
+
+#welcome .message { background: #2774a6; }
+#welcome .message .welcome { background: transparent url('/_files/img/welcome/welcomeBackMobileText.png') left center no-repeat; -webkit-background-size: 281px 46px; background-size: 281px 46px; height: 46px; overflow: hidden; text-indent: 100%; font-size: 0px; white-space: nowrap; padding: 6px 0px; margin: 0px 7px;}
+#welcome .content-container .message .copy { padding: 6px 12px; font-family: 'Open Sans', "Times New Roman", Times, serif; color: #fff; font-size: 1.1em; font-weight: bold; }
+
+#welcome-tabs .desk-tabs { display: none; }
+#welcome-tabs .tabs .closed-body { display: none; }
+#welcome-tabs .tabs .open-body { display: block; background: #fff; }
+#welcome-tabs .tabs h2 { color: #494949; font-family: 'Open Sans', "Times New Roman", Times, serif; height: 30px; display: block; cursor: pointer; background: url('/_files/img/welcome/welcome_mobileTabClosed.png') top center repeat-x; -webkit-background-size: 10px 36px; background-size: 10px 36px; margin: 0; padding: 6px 4px 0px 4px; font-size: 1.15em; }
+
+#welcome-tabs .tabs h2.open { background: url('/_files/img/welcome/welcome_mobileTabOpen.png') top center repeat-x; -webkit-background-size: 10px 36px; background-size: 10px 36px; color: #fff;  }
+
+#welcome-tabs .tabs .body li { background-color: #fff; border-top: 1px dotted #7f5900; padding: 8px 5px; position: relative; list-style: none; }
+#welcome-tabs .tabs .body li.pagingListItem { padding: 0; }
+#welcome-tabs .tabs .body li:first-child { border-top: none; }
+#welcome-tabs .tabs .body li.odd { background-color: #f7f6ef; }
+
+#welcome-tabs .tabs .body li a { color: #3399d1; font-family: 'Open Sans', "Times New Roman", Times, serif; font-size: 1em; }
+#welcome-tabs .tabs .body li span.close,
+#welcome-tabs .tabs .body li span.confirm{ position: absolute;}
+
+#welcome-tabs .tabs .body li span.close { top: 10px; right: 7px; background: url('/_files/img/welcome/welcome_close.png'); height: 13px; width: 13px; }
+#welcome-tabs .tabs .body li span.confirm { top: 3px; right: 5px; background: url('/_files/img/welcome/welcome_unsave.png'); height: 25px; width: 69px; }
+
+@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3/2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) {
+    #welcome-tabs .tabs .body li span.close { top: 10px; right: 7px; background: url('/_files/img/welcome/welcome_close2x.png'); -webkit-background-size: 13px 13px; background-size: 13px 13px; height: 13px; width: 13px; }
+    #welcome-tabs .tabs .body li span.confirm { top: 3px; right: 5px; background: url('/_files/img/welcome/welcome_unsave2x.png'); -webkit-background-size: 69px 25px; background-size: 69px 25px; height: 25px; width: 69px; }
+}
+
+#welcome .control-links { width: 100%; height: 30px; background: url('/_files/img/welcome/welcome_mobileTabClosed.png') top center repeat-x; -webkit-background-size: 10px 36px; background-size: 10px 36px; }
+#welcome .control-links span { overflow: hidden; text-indent: 100%; font-size: 0px; white-space: nowrap; display: block; float: right; margin: 5px 2px 0; cursor: pointer; }
+#welcome .control-links .save-btn { width: 97px; height: 23px; background: url('/_files/img/welcome/welcomeButtonSprite.png') 0 0 no-repeat; }
+#welcome .control-links .unsave-btn { width: 97px; height: 23px; background: url('/_files/img/welcome/welcomeButtonSprite.png') 0 -24px no-repeat; }
+#welcome .control-links .my-shortcuts { width: 133px; height: 23px; background: url('/_files/img/welcome/welcomeButtonSprite.png') 0 -47px no-repeat; }
+#welcome .control-links .dont-show { width: 153px; height: 25px; background: url('/_files/img/welcome/welcomeButtonSprite.png') 0 -70px no-repeat; }
+#welcome .control-links .close { width: 79px; height: 25px; background: url('/_files/img/welcome/welcomeButtonSprite.png') 0 -95px no-repeat; }
+
+#welcome .control-links .close,
+#welcome .control-links .dont-show,
+#welcome .control-links .save-btn,
+#welcome .control-links .unsave-btn,
+#welcome.open .control-links .showme,
+#welcome.open .control-links .save-btn,
+#welcome.open .control-links .unsave-btn,
+#welcome.open .control-links .my-shortcuts { display: none; }
+#welcome .control-links .showme,
+#welcome .control-links .my-shortcuts,
+#welcome.open .control-links .close,
+#welcome.open .control-links .dont-show { display: block; }
+
+#welcome.open #b-blog .first-col .odd { background-color: #f7f6ef; }
+#welcome.open #b-blog .first-col .even { background: #fff; }
+#welcome-tabs #b-blog .second-col li:first-child { border-top: 1px dotted #7f5900; }
+#welcome.open #b-blog .second-col .odd { background: #fff; }
+#welcome.open #b-blog .second-col .even { background-color: #f7f6ef; }
+
+#welcome.open #b-blog .more-btn { padding: 4px 6px; background: #ecead8; display: inline-block; float: right; margin: 6px 9px;}
+#welcome.open #b-blog .more-btn a { font-family: 'Open Sans', "Times New Roman", Times, serif;  font-size: 1em; color: #797979; text-transform: uppercase; }
+
+#welcome.open #b-blog .posts > ul li { padding: 5px 4px 2px; margin: 0 6px; font-family: 'Open Sans', "Times New Roman", Times, serif; }
+#welcome.open #b-blog .posts > ul li time { color: #4d4d4d; font-size: 1.1em; }
+#welcome.open #b-blog .posts > ul li p { padding: 0.2em 0 0.5em 0; margin: 0; }
+#welcome.open #b-blog .posts > ul li p a { color: #3399d1; font-size: 1.3em; }
+
+#bottomPaging { position: relative; width: 99%; height: 37px; overflow: auto; margin-top: 5px; }
+#bottomPaging .next,
+#bottomPaging .prev { position: absolute; font-family: 'Open Sans', "Times New Roman", Times, serif; font-size: 1.5em; padding: 4px 6px; background: #ecead8; color: #797979; text-transform: uppercase; }
+#bottomPaging .next { top: 0px; right: 0; }
+#bottomPaging .prev { top: 0px; left: 0; }
+#bottomPaging .leftSide { position: absolute; top: 7px; left: 50%; margin-left: -11px; font-size: 0.8em; }
+#bottomPaging .pager,
+#bottomPaging .bInd { display: none; }
+
+@media only screen and (max-width: 480px) {
+    #welcome .message { background: #2774a6 url('/_files/img/welcome/welcomeTextBg2x.png') center center no-repeat; }
+}
+
+@media only screen and (min-width: 480px) {
+    #welcome .content-container .message { overflow: auto; }    
+}
+
+@media only screen and (min-width: 545px) {
+    #welcome .content-container .message .welcome { float: left; width: 281px; }
+    #welcome .content-container .message .copy { float: left; width: 40% }
+}
+
+@media only screen and (min-width: 650px) {
+    #welcome .content-container .message .copy { float: left; width: 50% }
+}
+
+@media only screen and (min-width: 780px) {
+
+    #welcome { width: auto; margin-bottom: -21px; height: 30px;}
+    .ie7 #welcome { margin-top: 35px; }
+
+
+
+
+    #welcome.open {
+    height: 0px;
+ 
+    margin: 0px;
+    display: inline;
+}
+    #welcome.open .overlay {
+    position: absolute;
+    display: block;
+ 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 99999998;
+    opacity: 0.6;
+    filter: alpha(opacity=90); /* IE6-IE8 */
+}
+    #welcome.open .holder { position: absolute; width: 730px; background: #fff; z-index: 99999999; top: 215px; margin-left: 12px; left: 0;
+  -webkit-box-shadow: -3px 3px 5px -2px #000;
+          box-shadow: -3px 3px 5px -2px #000; } 
+
+    #welcome-tabs .desk-tabs { display: block; overflow: auto; text-align: right; margin-left: 1px; }
+    #welcome-tabs .desk-tabs ul { height: 45px; }
+    #welcome-tabs .desk-tabs li { float: left; padding: 8px 10px; border-style: solid; border-color: #b1b1b1; border-width: 1px 1px 1px 0px; list-style: none; color: #797979; font-size: 1em; background: #f4f4f4; font-family: 'Open Sans', "Times New Roman", Times, serif; margin-top: 5px; cursor: pointer; }
+    #welcome-tabs .desk-tabs li:first-child { border-width: 1px 1px 1px 1px; }
+    #welcome-tabs .desk-tabs li.open { color: #fff; font-size: 1.3em; background: #81bd69 url('/_files/img/welcome/welcome_deskTabBg.png') top center no-repeat; -ms-text-shadow: #81bd69; text-shadow: #81bd69; margin-top: 1px; }
+
+    #welcome .control-links { background: none; }
+
+    #welcome-tabs .tabs h2 { display: none; }
+
+    #bottomPaging { position: relative; width: 99%; height: 25px; overflow: auto; padding-top: 5px; }
+    #bottomPaging .next,
+    #bottomPaging .prev { font-size: 1em; padding: 2px 4px; }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+    #welcome-tabs .desk-tabs { position: absolute; top: 69px; right: 92px; }
+
+    #welcome.open .control-links { position: absolute; top: 5px; right: 5px; }
+
+    #welcome .content-container .message { float: left; width: 430px; height: 534px; background: transparent url('/_files/img/welcome/welcomeBackPerson.png') center center no-repeat; position: relative; }
+    #welcome .content-container .message .welcome { width: 321px; height: 141px; overflow: hidden; text-indent: 100%; font-size: 0px; white-space: nowrap; background: transparent url('/_files/img/welcome/welcomeBackDesktopText.png') left center no-repeat; -webkit-background-size: 321px 141px; background-size: 321px 141px; padding: 6px 0px; margin: 0px 7px; position: absolute; top: 170px; left: 46px; }
+    #welcome .content-container .message .copy { width: 313px; position: absolute; top: 315px; left: 46px; font-size: 1.05em; line-height: 1.4em; text-shadow: #2774a6 1px 1px;}
+    #welcome .content-container .links { float: left; width: 550px; margin-top: 115px; }
+
+    #welcome.open .holder { top: 183px; width: 980px; margin-left: -499px; left: 50%; }
+
+    #welcome .control-links { width: 341px; }
+
+    #welcome.open .desk-blog .links { width: 100%; }
+    #welcome.open .desk-blog .message { display: none; }
+
+
+    #welcome.open #b-blog .first-col .odd { background-color: #f7f6ef; }
+    #welcome.open #b-blog .first-col .even { background: #fff; }
+    #welcome-tabs #b-blog .second-col li:first-child { border-top: none; }
+    #welcome.open #b-blog .second-col .odd { background-color: #f7f6ef; }
+    #welcome.open #b-blog .second-col .even { background: #fff; }
+
+    #welcome.open #t-blog { background: none; color: #81bd69; text-align: center; font-size: 5em; height: 95px; text-transform: uppercase; cursor: default; }
+
+    #welcome.open #b-blog .posts { overflow: auto; }
+    #welcome.open #b-blog .posts > ul { float: left; width: 50%; margin: 0; padding: 0; }
+
+}
+
+@media only screen and (min-width: 1085px) {
+
+    #welcome.open .holder { top: 115px; margin-left: -499px; left: 50%; }
+
+}
