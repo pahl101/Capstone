@@ -73,8 +73,34 @@
       <br><br/>
 
       <div class="rejilla">
+
         <a href="file:///Users/ceferinoj/Desktop/Capstone/NewCastingCall/index.php">
-        <div class="caja"><img src="movies/CivWar.jpg"/>
+        <?php
+          $servername = "us-cdbr-azure-west-b.cleardb.com";
+          $username = "b9196a4d86ae8a";
+          $password = "864b7a39";
+          $databasename = "se_group1_capstone";
+
+          $conn = new mysqli($servername, $username, $password, $databasename);
+          $result = $conn->query("SELECT Tittle, ShootDates FROM castingcallinfo");
+
+          if ($result->num_rows > 0) {
+              // output data of each row
+              while($row = $result->fetch_assoc()) {
+
+                echo "<div class='caja'><img src='movies/filmImage.jpg'/>";
+                echo "<p>".$row['Tittle']."</p>";
+                echo "<p>".$row['ShootDates']."</p>";
+                echo "<div class='shadow-3'></div>";
+                echo "</div>";
+                  
+              }
+          } else {
+              echo "No casting calls at this time.";
+          }
+        ?>
+
+        <!-- <div class="caja"><img src="movies/CivWar.jpg"/>
           <p>Captain America: Civil War</p>
           <div class="shadow-3"></div>
         </div>
@@ -186,7 +212,7 @@
 
         <div class="caja"><img src="movies/nightBefore.jpg"/>
           <p>The Night Before</p>
-        </div>
+        </div> -->
 
       </div>
 

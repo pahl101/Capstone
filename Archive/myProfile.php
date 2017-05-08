@@ -1,29 +1,30 @@
+
+
 <!DOCTYPE html>
-<html>
+<html >
   <head>
     <meta charset="UTF-8">
     <title>ChapCast</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
     
         <link rel="stylesheet" href="css/default.css">
 
+    
   </head>
 
   <body>
   
     <nav>
       <ul>
-        <!-- <form action="phpscript.php" method="post"> -->
         <div class = "user" style="background-image: url('images/newUser.jpg')"></div>
         <li>
-          <?php
-          session_start();
-          echo $_SESSION['userName'];
-          ?>
-
+          <?php 
+            session_start();
+            echo $_SESSION['userName'];
+          ?> 
         </li>
-        <!-- </form> -->
         <br>
 
       </ul> 
@@ -31,23 +32,49 @@
         
   <div class = "content">
 
-      <div class="topnav" id="myTopnav">
-        <!--Opens Profile Settings Page-->
-    </div>
+      <br/>
 
-        
+      <!-- <div class="topnav" id="myTopnav">
+        <a href="logoutphp.php" >Log Out</a> -->
+        <!-- <a href="editProfile.php" >Settings</a> -->
+        <!-- <a href="profilePage.php" >My Profile</a>
+        <a href="mainPage.php" >Casting Calls</a>
+        <a href="directorView.php" >Actors</a>
+ 
+    </div> -->
 
-      <form action="profilephp.php" method="post" target="_self">
-      
-        <center><h1>Welcome
-        <?php
-          echo $_SESSION['userName'];
-          ?>
-          !</h1></center>
+        <br/><center><h1>Welcome <?php echo $_SESSION['userName']; ?>!</h1></center>
 
-        
+        <form action="newcastingphp.php" method="post">
+
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Verdana'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
+</style>
+<body class="w3-light-grey">
+
+<!-- Page Container -->
+<div class="w3-content w3-margin-top" style="max-width:1400px;">
+
+  <!-- The Grid -->
+  <div class="w3-row-padding">
+
+
+    <!-- Right Column -->
+    <center><div class="w3-twothird"></center>
+    
+      <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+        <h2 class="w3-text-grey w3-padding-16"><i class="fa fa-user fa-fw w3-margin-right w3-xxlarge w3-text-grey"></i>
+        </h2>
+            <form action="newcastingphp.php" method="post">
         
         <fieldset>
+
           <?php
             $servername = "us-cdbr-azure-west-b.cleardb.com";
             $username = "b9196a4d86ae8a";
@@ -148,13 +175,31 @@
           
 
         </form>
+
         
-        </fieldset>
-        
-      </form>
+          </fieldset>
+        </form>
+
+
+          </h5>
+      </div>
+      
+
+    <!-- End Right Column -->
+    </div>
+
+    
+  <!-- End Grid -->
+  </div>
+  
+  <!-- End Page Container -->
+</div>
+
+      
 
     </div>
+
+
     
   </body>
-
 </html>

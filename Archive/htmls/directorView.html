@@ -2,97 +2,46 @@
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>ChapCast</title>
+    <title>Chapman Casting Portal</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
     
-        <link rel="stylesheet" href="css/default.css">
+        <link rel="stylesheet" href="css/styleDirector.css">
 
-
+    
   </head>
 
   <body>
     <nav>
       <ul>
-        <div class = "user" style="background-image: url('images/newUser.jpg')"></div>
-        <li>
-          <?php 
-            session_start();
-            echo $_SESSION['userName'];
-          ?> 
-          </li>
+        <div class = "user" style="background-image: url('actors/anneHath.jpg')"></div>
+        <li>Anne Hathaway</li>
         <br>
-        <li><a href="NewCastingCall.php">+ New Casting Call</a></li> <!--Opens Create Casting Call-->
-        <?php
-        $servername = "us-cdbr-azure-west-b.cleardb.com";
-        $username = "b9196a4d86ae8a";
-        $password = "864b7a39";
-        $databasename = "se_group1_capstone";
-
-        $conn = new mysqli($servername, $username, $password, $databasename);
-        $hashed = $_SESSION['hashedEmail'];
-        $results = $conn->query("CALL ReturnMyCastingInfo($hashed)");
-        if ($results->num_rows > 0) {
-
-          while($row = $results->fetch_assoc()) {
-
-            $_SESSION['filmTitle'] = $row['Tittle'];
-
-            echo "<li><a href='castingCallpage.php'>".$_SESSION['filmTitle']."</a></li>";
-                
-          } 
-        }
-          
-        else {
-          echo "<label>No current casting calls.</label>";
-        }
-
-        $conn->close();
-        ?>
+        <li><a href="NewCastingCall.html">+ New Casting Call</a></li> <!--Opens Create Casting Call-->
+        <li><a href="#Call1">...</a></li>
+        <li><a href="#Call2">...</a></li> 
 
       </ul> 
     </nav>
       
-    <br/>  
     
     <div class = "content">
 
+    <center><h1><img src="images/CHAPCAST.png" alt="Chapcast" style="width: 350px; height: 50px"></h1></center>
+
       <div class="topnav" id="myTopnav">
-        <a href="logoutphp.php" >Log Out</a>
-        <!-- <a href="editProfile.php">Settings</a> --> <!--Opens Profile Settings Page-->
-        <a href="profilePage.php">My Profile</a>
-        <a href="mainPage.php">Casting Calls</a>
-        <a href="">Actors</a>
-      </div>
+        <a href="index.html" >Log Out</a>
+        <a href="editProfile.html">Settings</a> <!--Opens Profile Settings Page-->
+        <a href=" ">Director</a>
+        <a href="mainPage.html">Actor</a>
+    </div>
+
+        <center><img src="images/logo.png" alt="Chapman Logo" align="center" style="width:300px;height:50px;"></center>
 
       <div class="rejilla">
-        <?php
-          $servername = "us-cdbr-azure-west-b.cleardb.com";
-          $username = "b9196a4d86ae8a";
-          $password = "864b7a39";
-          $databasename = "se_group1_capstone";
 
-          $conn = new mysqli($servername, $username, $password, $databasename);
-          $result = $conn->query("SELECT RefName FROM actorref");
-
-          if ($result->num_rows > 0) {
-              // output data of each row
-              while($row = $result->fetch_assoc()) {
-
-                echo "<div class='caja'><img src='actors/cap.jpg'/>";
-                echo "<p>".$row['RefName']."</p>";
-                echo "<div class='shadow-3'></div>";
-                echo "</div>";
-                  
-              }
-          } else {
-              echo "Error Occurred while loading this page.";
-          }
-        ?>
-       
-
-       <!--  <div class="caja"><img src="actors/cap.jpg"/>
+        <div class="caja"><img src="actors/cap.jpg"/>
           <p>Chris Evans</p>
           <p>"Captain America"</p>
           <div class="shadow-3"></div>
@@ -231,7 +180,7 @@
         <div class="caja"><img src="actors/markR.jpg"/>
           <p>Mark Ruffalo</p>
           <p>"The Hulk"</p>
-        </div> -->
+        </div>
 
       </div>
 
