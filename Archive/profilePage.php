@@ -1,5 +1,52 @@
 <!DOCTYPE html>
 <html >
+<?php
+
+        $servername = "us-cdbr-azure-west-b.cleardb.com";
+      $username = "b9196a4d86ae8a";
+    $password = "864b7a39";
+      $databasename = "se_group1_capstone";
+
+    $conn = new mysqli($servername, $username, $password, $databasename);
+    $results = $conn->query("CALL ReturnActorKeys($hashedPass)");
+          if ($results->num_rows > 0) {
+
+            while($row = $results->fetch_assoc()) {
+
+              $_SESSION['genres'] = $row['GenreName'];
+
+        echo $_SESSION['genres'];
+                
+            } 
+          }
+          
+          else {
+            echo "not working (genre)";
+          }
+          $conn->close();
+
+        $servername = "us-cdbr-azure-west-b.cleardb.com";
+      $username = "b9196a4d86ae8a";
+    $password = "864b7a39";
+      $databasename = "se_group1_capstone";
+
+    $conn = new mysqli($servername, $username, $password, $databasename);
+    $results = $conn->query("CALL ReturnProdLvl($hashedPass)");
+          if ($results->num_rows > 0) {
+
+            while($row = $results->fetch_assoc()) {
+
+              $_SESSION['levelInterest'] = $row['ProdLVL'];
+
+        echo $_SESSION['levelInterest'];
+                
+            } 
+          }
+          
+          else {
+            echo "not working (prod lvl)";
+          }
+?>
   <head>
     <meta charset="UTF-8">
     <title>ChapCast</title>
@@ -102,7 +149,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Arial", sans-serif}
           </p>
           <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-darkred"></i>
             <?php 
-            echo $_SESSION['phoneNumber'];
+            $number = (string)$_SESSION['phoneNumber'];
+            $formatted_number = "($number[0]$number[1]$number[2])$number[3]$number[4]$number[5]-$number[6]$number[7]$number[8]$number[9]";
+            echo $formatted_number;
             ?> 
           </p>
           <hr>

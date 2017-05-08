@@ -24,8 +24,9 @@ if($_POST['submit'] == 1 )
   	// $link = $_POST['video'];
   	// $_SESSION['projectLink']=$link;
 
-  	 $newPhone = (int)$_POST['phone'];
-  	$_SESSION['phoneNumber']=$newPhone;
+  	 $newPhone = $_POST['phone'];
+  	 $phone =preg_replace("/[^0-9]/", "", $newPhone);
+  	 $_SESSION['phoneNumber']=(int) $phone;
 
   	$newRole=(int)$_POST['student_role'];
   	$_SESSION['role']=$newRole;
@@ -34,16 +35,16 @@ if($_POST['submit'] == 1 )
   	$_SESSION['bio']=$newDescription;
 
 	$newGender =$_POST['gender_role'];
-	$_SESSION['gender']=$newGender;
+
 
 	$newMajor =$_POST['student_major'];
 	$_SESSION['major']=$newMajor;
 
-	//$newAvailability =$_POST ['availability']; //actor
-	//$_SESSION['availability'] = $newAvailability;
+	$newAvailability =$_POST ['availability']; //actor
+	
 
 	$_SESSION['genres'] = $_POST['user_interest'];
-	//$_SESSION['levelInterest'] = $_POST['user_prod_interest'];
+	$_SESSION['levelInterest'] = $_POST['user_prod_interest'];
 	//$_SESSION['directorGenre'] = $_POST['director_interest'];
 	//$_SESSION['directorLvl'] = $_POST['director_prod_interest'];
 	
@@ -62,12 +63,16 @@ if($_POST['submit'] == 1 )
 		$gender = 0;
 	}
 
-	// if ($newAvailability == "Yes") {
-	// 	$avail = 1;
-	// }
-	// else {
-	// 	$avail = 0;
-	// }
+	$_SESSION['gender'] = $gender;
+
+	if ($newAvailability == "Yes") {
+		$avail = 1;
+	}
+	else {
+		$avail = 0;
+	}
+	$_SESSION['availability'] = $avail;
+
 
 	//echo $_SESSION['hashedEmail'];
 
@@ -114,7 +119,7 @@ if($_POST['submit'] == 1 )
 	$res2->close();
 	$aphone = 1231231234;
 	$res3 = $conn->prepare("CALL AddTest3(?,?,?,?)");
-	$res3->bind_param('issi',$_SESSION['hashedEmail'], $_SESSION['userName'], $_SESSION['userEmail'], $aphone);
+	$res3->bind_param('issi',$_SESSION['hashedEmail'], $_SESSION['userName'], $_SESSION['userEmail'], $_SESSION['phoneNumber']);
 	$res3->execute();
 
 	$res3->close();
@@ -142,13 +147,13 @@ if($_POST['submit'] == 1 )
 
 // if ($newRole == 0 || $newRole == 2) {
 
-		$resultLevel = $conn->prepare('CALL addProdLVL(?,?)');
-		$resultLevel->bind_param('is', $_SESSION['hashedEmail'], $_SESSION['prodLvls']);
+		// $resultLevel = $conn->prepare('CALL addProdLVL(?,?)');
+		// $resultLevel->bind_param('is', $_SESSION['hashedEmail'], $_SESSION['prodLvls']);
 
-		$resultLevel->execute();
+		// $resultLevel->execute();
 	
 
-		$resultLevel->close();
+		// $resultLevel->close();
 // }
 
 
