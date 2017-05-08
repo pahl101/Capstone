@@ -106,53 +106,55 @@ if($_POST['pressed2'] == 1 )
           else {
           	echo "not working (actor stuff)";
           }
+
+          
           $conn->close();
 
-  //       $servername = "us-cdbr-azure-west-b.cleardb.com";
-  // 		$username = "b9196a4d86ae8a";
- 	// 	$password = "864b7a39";
-  // 		$databasename = "se_group1_capstone";
+        $servername = "us-cdbr-azure-west-b.cleardb.com";
+  		$username = "b9196a4d86ae8a";
+ 		$password = "864b7a39";
+  		$databasename = "se_group1_capstone";
 
-		// $conn = new mysqli($servername, $username, $password, $databasename);
-		// $results = $conn->query("CALL ReturnActorKeys($hashedPass)");
-  //         if ($results->num_rows > 0) {
+		$conn = new mysqli($servername, $username, $password, $databasename);
+		$results = $conn->query("CALL ReturnActorKeys($hashedPass)");
+          if ($results->num_rows > 0) {
 
-  //         	while($row = $results->fetch_assoc()) {
+          	while($row = $results->fetch_assoc()) {
 
-  //         		$_SESSION['genres'] = $row['GenreName'];
+          		$_SESSION['genres'] = $row['GenreName'];
 
-		// 		echo $_SESSION['genres'];
+				echo $_SESSION['genres'];
                 
-  //          	} 
-  //         }
+           	} 
+          }
           
-  //         else {
-  //         	echo "not working (genre)";
-  //         }
-  //         $conn->close();
+          else {
+          	echo "not working (genre)";
+          }
+          $conn->close();
 
-  //       $servername = "us-cdbr-azure-west-b.cleardb.com";
-  // 		$username = "b9196a4d86ae8a";
- 	// 	$password = "864b7a39";
-  // 		$databasename = "se_group1_capstone";
+        $servername = "us-cdbr-azure-west-b.cleardb.com";
+  		$username = "b9196a4d86ae8a";
+ 		$password = "864b7a39";
+  		$databasename = "se_group1_capstone";
 
-		// $conn = new mysqli($servername, $username, $password, $databasename);
-		// $results = $conn->query("CALL ReturnProdLvl($hashedPass)");
-  //         if ($results->num_rows > 0) {
+		$conn = new mysqli($servername, $username, $password, $databasename);
+		$results = $conn->query("CALL ReturnProdLvl($hashedPass)");
+          if ($results->num_rows > 0) {
 
-  //         	while($row = $results->fetch_assoc()) {
+          	while($row = $results->fetch_assoc()) {
 
-  //         		$_SESSION['levelInterest'] = $row['ProdLVL'];
+          		$_SESSION['levelInterest'] = $row['ProdLVL'];
 
-		// 		echo $_SESSION['levelInterest'];
+				echo $_SESSION['levelInterest'];
                 
-  //          	} 
-  //         }
+           	} 
+          }
           
-  //         else {
-  //         	echo "not working (prod lvl)";
-  //         }
-          //$conn->close();
+          else {
+          	echo "not working (prod lvl)";
+          }
+          $conn->close();
 
           
 

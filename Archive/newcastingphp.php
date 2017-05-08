@@ -33,6 +33,21 @@ if($_POST['submit'] == 1 )
   $newProdLvl = $_POST['prodlevel'];
   $_SESSION['ProdLvl']=$newProdLvl;
 
+  $roleTitles = $_POST['myInputs'];
+  $roleDesc = $_POST['roledescriptionInputs'];
+  $roleGender = $_POST['rolegenderInputs'];
+  $roleEthnicities = $_POST['ethnicityInputs'];
+  $roleAge = (int)$_POST['roleAge'];
+
+  if ($newGender == "male") {
+    $newGender = 1;
+  }
+  else if ($newGender == "female"){
+    $newGender = 0;
+  }
+  else {
+    $newGender = 2;
+  }
 
   	
 
@@ -41,6 +56,30 @@ $resultStudent->bind_param('isssiss', $_SESSION['hashedEmail'], $_SESSION['audit
 
 $resultStudent->execute();
 
+$resultStudent->close();
+
+
+$servername = "us-cdbr-azure-west-b.cleardb.com";
+$username = "b9196a4d86ae8a";
+$password = "864b7a39";
+$databasename = "se_group1_capstone";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $databasename);
+
+$index = 0;
+foreach ($roleTitles as $title) {
+
+
+  $resultRole = $conn->prepare('CALL AddCastingRoles(?,?,?,?,?,?)');
+  $resultRole->bind_param('issiis', $_SESSION['hashedEmail'], $title, $roleDesc[$index], $roleGender[$index], $roleAge[$index], $roleEthnicities[$index]);
+
+  $resultRole->execute();
+
+  ++$index;
+} 
+
+$resultRole->close();
 header('Location: castingCallPage.php');
 
 $conn->close();

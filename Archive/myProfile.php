@@ -140,12 +140,12 @@
 
 
           ?>
-
+          <center><button name='submit' VALUE='1' style="height:50px; width:250px; background-color: #990026; color: #FFFFFF" >Submit</button></center>
           </div>
 
         <form action="profilephp.php" method="post" target="_self">
 
-          <center><button buttonblock VALUE="1" name ='submit'>Submit</button></center>
+          
 
         </form>
         

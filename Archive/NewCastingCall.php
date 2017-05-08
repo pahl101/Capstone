@@ -25,8 +25,32 @@
         </li>
         <br>
         <li><a href="NewCastingCall.php">+ New Casting Call</a></li> <!--Opens Create Casting Call-->
-        <li><a href="#Call1">...</a></li>
-        <li><a href="#Call2">...</a></li> 
+        <?php
+        $servername = "us-cdbr-azure-west-b.cleardb.com";
+        $username = "b9196a4d86ae8a";
+        $password = "864b7a39";
+        $databasename = "se_group1_capstone";
+
+        $conn = new mysqli($servername, $username, $password, $databasename);
+        $hashed = $_SESSION['hashedEmail'];
+        $results = $conn->query("CALL ReturnMyCastingInfo($hashed)");
+        if ($results->num_rows > 0) {
+
+          while($row = $results->fetch_assoc()) {
+
+            $_SESSION['filmTitle'] = $row['Tittle'];
+
+            echo "<li><a href='castingCallpage.php'>".$_SESSION['filmTitle']."</a></li>";
+                
+          } 
+        }
+          
+        else {
+          echo "<label>No current casting calls.</label>";
+        }
+
+        $conn->close();
+        ?> 
 
       </ul> 
     </nav>
@@ -75,6 +99,8 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
             <form action="newcastingphp.php" method="post">
         
         <fieldset>
+
+          
           <!-- <label>Film Poster:</label>
             <input type="file" name="filmposter" accept="image/*"><br><br><br> -->
 
@@ -88,54 +114,48 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           <!-- <label for="script">Script:</label>
           <input type="file" id="script" name="script" accept="application/pdf" required><br><br><br> -->
 
-          <label for="prodlevel">Level of Production:</label><br>
-          <select id="prodlevel" name="prodlevel" required>
-            <option selected disabled>Choose the Level of Production:</option>
-            <option value="1">Undergraduate Directing 2 (FP 338)</option>
-            <option value="2">Undergraduate Directing 3 (FP 438)</option>
-            <option value="3">Visual Storytelling (FTV 130)</option>
-            <option value="4">Undergraduate Intermediate Production (FP 280)</option>
-            <option value="5">Undergraduate Advanced Production (FP 331)</option>
-            <option value="6">Undergraduate Senior Thesis (FP 497-498)</option>
-            <option value="21">Undergraduate Byte-sized Television (TWP 313)</option>
-            <option value="22">Undergraduate Television Pilots (TWP 398)</option>
-            <option value="7">Undergraduate Digital Arts Project</option>
-            <option value="23">Undergraduate Independent Study</option>
-            <option value="8">Graduate Fundamentals of Directing 1 (FP 538)</option>
-            <option value="9">Graduate Fundamentals of Directing 2 (FP 539)</option>
-            <option value="10">Graduate Intermediate Directing (FP 664)</option>
-            <option value="11">Graduate Advanced Directing (FP 665)</option>
-            <option value="12">Master class in Directing (FP 638)</option>
-            <option value="13">Graduate Production Workshop 1 (FP 531)</option>
-            <option value="14">Graduate Production Workshop 2 (FP 532)</option>
-            <option value="15">Graduate Production Workshop 3 (FP 577)</option>
-            <option value="16">Graduate Production Workshop 4 (FP 631)</option>
-            <option value="17">Graduate Thesis (FP 698)</option>
-            <option value="18">Graduate Filmmakers and Actors Workshop (FP 507)</option>
-            <option value="19">Graduate Independent Study</option>
-            <option value="20">Other</option>
+          <?php 
+            $servername = "us-cdbr-azure-west-b.cleardb.com";
+            $username = "b9196a4d86ae8a";
+            $password = "864b7a39";
+            $databasename = "se_group1_capstone";
 
-          </select><br><br>
+            // Create connection
+            $conn = new mysqli($servername, $username, $password, $databasename);
+            
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            } 
+            //echo "Connected successfully". "<br>";
 
-          <script type="text/javascript">
-          var today = new Date().toISOString().split('T')[0];
-          document.getElementsByName("filmdate")[0].setAttribute('min', today);
-          document.getElementsByName("auditiondate")[0].setAttribute('min', today);
+            echo "<label for='prodlevel'>Level of Production:</label><br>";
+            echo "<select id='prodlevel' name='prodlevel' required>";
+            echo "<option selected disabled>Choose the Level of Production:</option>";
+            $conn = new mysqli($servername, $username, $password, $databasename);
+            $result = $conn->query("CALL ReturnAllProdLvL()");
+            if ($result->num_rows > 0) {
 
-          </script>
+              while($row = $result->fetch_assoc()) {
 
-          <!-- <label for="location">Filming Location:</label><br>
-          <input type="text" id="location" name="location" required><br><br> -->
+                 echo"<option name='prodlevel' value='". $row['LVLName'] ."'>". $row['LVLName'] ."</option>";
+            } 
+          }
+
+          echo "</select><br><br>";
+          ?>
 
           <label for="startdate">Filming Date: </label>
-          <input type="date" id="filmdate" name="filmdate" min="2017-04-19" required><br>
+          <input type="date" id="filmdate" name="filmdate" min="<?php echo date("Y-m-d"); ?>" required><br>
 
           <br><label for="auditionlocation">Audition Location:</label>
           <input type="text" id="auditionlocation" name="auditionlocation"  required><br><br>
 
 
           <label for="auditiondate">Audition Date:</label>
-          <input type="date" id="auditiondate" name="auditiondate" min="2017-04-19" required><br><br>
+          <input type="date" id="auditiondate" name="auditiondate" min="<?php echo date("Y-m-d"); ?>" required><br><br>
+
+          <br><br><label><b> Please specify all roles you are currently casting for. </b></label><br><br>
 
           <script type="text/javascript">
             var counter = 1;
@@ -152,10 +172,10 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           +"<option selected disabled>Choose Role Gender:</option>"
           +"<option value='male'>Male</option>"
           +"<option value='female'>Female</option>"
-          +"<option value='ambiguous'>Ambiguous</option>"
-          +"<option value='irrelevant'>Irrelevant</option></select><br><br>"
+          +"<option value='open'>Open</option></select><br><br>"
           +"Role Ethnicity:"+"<br><select id='roleEthnicity' name='ethnicityInputs[]''><br><br>"
           +"<option selected disabled>Choose Role Ethnicity:</option>"
+          +"<option value='open'>Open</option>"
           +"<option value='hispanic'>Hispanic or Latino</option>"
           +"<option value='americanIndian'>American Indian or Alaska Naitive</option>"
           +"<option value='africanAmerican'>Black or African American</option>"
@@ -169,11 +189,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           +"<option value='samoan'>Samoan</option>"
           +"<option value='other'>Other</option>"
           +"</select><br><br>"
-          +"<label>Role age range:</label><br>"
-          +"Lowest age:"
-          +"<br><input type='int' name='lower' min='1' max='100' required></input><br>"
-          +"Highest age:"
-          +"<br><input type='int' name='upper' min='1' max='100' required></input><br><br><br>"
+          +"<label>Role age:</label><br>"
+          +"<br><input type='int' name='roleAge' min='1' max='100' required></input><br>"
+
           ;
                       document.getElementById(divName).appendChild(newdiv);
                       counter++;
@@ -189,12 +207,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
                       <option selected disabled>Choose Role Gender:</option>
                       <option value="male">Male</option>
                       <option value="female">Female</option>
-                      <option value="ambiguous">Ambiguous</option>
-                      <option value="irrelevant">Irrelevant</option>
+                      <option value="open">Open</option>
                     </select><br><br>
 
                     Role Ethnicity:<br><select id="roleEthnicity" name="ethnicityInputs[]"><br><br>
                       <option selected disabled>Choose Role Ethnicity:</option>
+                      <option value="open">Open</option>
                       <option value="hispanic">Hispanic or Latino</option>
                       <option value="americanIndian">American Indian or Alaska Naitive</option>
                       <option value="africanAmerican">Black or African American</option>
@@ -209,16 +227,14 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
                       <option value="other">Other</option>
                     </select><br><br>
 
-                    <label>Role age range:</label><br>
-                    Lowest age:<br><input type="int" name="lower" min="1" max="100" required></input><br>
-                    Highest age:<br><input type="int" name="upper" min="1" max="100" required></input><br>
+                    <label>Role age:</label><br>
+                    <input type="int" name="roleAge" min="1" max="100" required></input><br><br>
                 </div>
-               <input type="button" value="Add another role" onClick="addInput('dynamicInput');">
+               <input buttonblock type="button" value="Add another role" onClick="addInput('dynamicInput');">
           </form> 
 
-
-
-               <br><br><center><button name='submit' VALUE='1' >Submit</button></center>
+<center><button name='submit' VALUE='1' style="height:50px; width:250px; background-color: #990026; color: #FFFFFF" >Submit</button></center>
+               
         
           </fieldset>
         </form>
@@ -228,9 +244,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
       </div>
       
 
-
     <!-- End Right Column -->
     </div>
+
     
   <!-- End Grid -->
   </div>

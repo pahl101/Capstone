@@ -24,8 +24,32 @@
         </li>
         <br>
         <li><a href="NewCastingCall.php">+ New Casting Call</a></li> <!--Opens Create Casting Call-->
-        <li><a href="#Call1">...</a></li>
-        <li><a href="#Call2">...</a></li> 
+        <?php
+        $servername = "us-cdbr-azure-west-b.cleardb.com";
+        $username = "b9196a4d86ae8a";
+        $password = "864b7a39";
+        $databasename = "se_group1_capstone";
+
+        $conn = new mysqli($servername, $username, $password, $databasename);
+        $hashed = $_SESSION['hashedEmail'];
+        $results = $conn->query("CALL ReturnMyCastingInfo($hashed)");
+        if ($results->num_rows > 0) {
+
+          while($row = $results->fetch_assoc()) {
+
+            $_SESSION['filmTitle'] = $row['Tittle'];
+
+            echo "<li><a href='castingCallpage.php'>".$_SESSION['filmTitle']."</a></li>";
+                
+          } 
+        }
+          
+        else {
+          echo "<label>No current casting calls.</label>";
+        }
+
+        $conn->close();
+        ?>
 
       </ul> 
     </nav>
@@ -91,54 +115,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           <p class="w3-large"><b><i class="fa fa-asterisk fa-fw w3-margin-right w3-text-darkred"></i>Production Level</b></p>
           <p>
             <?php 
-            if ($_SESSION['ProdLvl'] == 1)
-              echo "Undergraduate Directing 2 (FP 338)";
-            else if ($_SESSION['ProdLvl'] == 2)
-              echo "Undergraduate Directing 3 (FP 438)";
-            else if ($_SESSION['ProdLvl'] == 3)
-              echo "Visual Storytelling (FTV 130)";
-            else if ($_SESSION['ProdLvl'] == 4)
-              echo "Undergraduate Intermediate Production (FP 280)";
-            else if ($_SESSION['ProdLvl'] == 5)
-              echo "Undergraduate Advanced Production (FP 331)";
-            else if ($_SESSION['ProdLvl'] == 6)
-              echo "Undergraduate Senior Thesis (FP 497-498)";
-            else if ($_SESSION['ProdLvl'] == 7)
-              echo "Undergraduate Digital Arts Project";
-            else if ($_SESSION['ProdLvl'] == 8)
-              echo "Graduate Fundamentals of Directing 1 (FP 538)";
-            else if ($_SESSION['ProdLvl'] == 9)
-              echo "Undergraduate Advanced Production (FP 331)";
-            else if ($_SESSION['ProdLvl'] == 10)
-              echo "Graduate Intermediate Directing (FP 664)";
-            else if ($_SESSION['ProdLvl'] == 11)
-              echo "Graduate Advanced Directing (FP 665)";
-            else if ($_SESSION['ProdLvl'] == 12)
-              echo "Master class in Directing (FP 638)";
-            else if ($_SESSION['ProdLvl'] == 13)
-              echo "Graduate Production Workshop 1 (FP 531)";
-            else if ($_SESSION['ProdLvl'] == 14)
-              echo "Graduate Production Workshop 2 (FP 532)";
-            else if ($_SESSION['ProdLvl'] == 15)
-              echo "Graduate Production Workshop 3 (FP 577)";
-            else if ($_SESSION['ProdLvl'] == 16)
-              echo "Graduate Production Workshop 4 (FP 631)";
-            else if ($_SESSION['ProdLvl'] == 17)
-              echo "Graduate Thesis (FP 698)";
-            else if ($_SESSION['ProdLvl'] == 18)
-              echo "Graduate Filmmakers and Actors Workshop (FP 507)";
-            else if ($_SESSION['ProdLvl'] == 19)
-              echo "Graduate Independent Study";
-            else if ($_SESSION['ProdLvl'] == 20)
-              echo "Other";
-            else if ($_SESSION['ProdLvl'] == 21)
-              echo "Undergraduate Byte-sized Television (TWP 313)";
-            else if ($_SESSION['ProdLvl'] == 22)
-              echo "Undergraduate Television Pilots (TWP 398)";
-            else if ($_SESSION['ProdLvl'] == 23)
-              echo "Undergraduate Independent Study";
-
-
+            echo $_SESSION['ProdLvl'];
             ?> 
           </p>
           
@@ -192,23 +169,39 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           <h5 class="w3-opacity"><b>Roles:</b></h5><br>
           <h6 class="w3-text-darkred">
             <?php
-            foreach ($_POST['myInputs[]'] as $name) {
-              $count=1;
-              foreach($_POST['roledescriptionInputs[]'] as $description) {
-                foreach ($_POST['ethnicityInputs[]'] as $ethnicity) {
-                  foreach ($_POST['lower'] as $low) {
-                    foreach ($_POST['upper'] as $up) {
-                      $range=$low." - ".$up;
-                      echo "Role ".$count.":<br>";
-                      echo "Name: ".$name;
-                      echo "<br>Description: <br>".$description;
-                      echo "<br>Ethnicity: ".$ethnicity;
-                      echo "<br>Age Range: ".$range;
-                    }
-                  }
+              $servername = "us-cdbr-azure-west-b.cleardb.com";
+              $username = "b9196a4d86ae8a";
+              $password = "864b7a39";
+              $databasename = "se_group1_capstone";
+
+              $conn = new mysqli($servername, $username, $password, $databasename);
+              $hashed = $_SESSION['hashedEmail'];
+
+              $results = $conn->query("CALL ReturnMyCastingRoles($hashed)");
+              if ($results->num_rows > 0) {
+
+                while($row = $results->fetch_assoc()) {
+
+                  $_SESSION['roleName'] = $row['CharName'];
+                  $_SESSION['roleDesc'] = $row['CharSynops'];
+                  $_SESSION['roleGender'] = $row['CharGender'];
+                  $_SESSION['roleEthnicity'] = $row['CharEthnicity'];
+                  $_SESSION['roleAge'] = $row['CharAge'];
+
+                  echo "<b>Name:</b>  " . $_SESSION['roleName'];
+                  echo "<br><b>Description:</b><br>" . $_SESSION['roleDesc'];
+                  echo "<br><b>Gender:</b>  " . $_SESSION['roleGender'];
+                  echo "<br><b>Ethnicity:</b>  " . $_SESSION['roleEthnicity'];
+                  echo "<br><b>Age:</b>  " . $_SESSION['roleAge'];
+                  echo "<br><br>";
+
                 }
               }
-            }
+
+              else {
+                echo "OPEN (NO DEFINED ROLES)";
+              }
+
             ?>
           </h6>
         </div>

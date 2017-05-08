@@ -24,8 +24,32 @@
           </li>
         <br>
         <li><a href="NewCastingCall.php">+ New Casting Call</a></li> <!--Opens Create Casting Call-->
-        <li><a href="#Call1">...</a></li>
-        <li><a href="#Call2">...</a></li> 
+        <?php
+        $servername = "us-cdbr-azure-west-b.cleardb.com";
+        $username = "b9196a4d86ae8a";
+        $password = "864b7a39";
+        $databasename = "se_group1_capstone";
+
+        $conn = new mysqli($servername, $username, $password, $databasename);
+        $hashed = $_SESSION['hashedEmail'];
+        $results = $conn->query("CALL ReturnMyCastingInfo($hashed)");
+        if ($results->num_rows > 0) {
+
+          while($row = $results->fetch_assoc()) {
+
+            $_SESSION['filmTitle'] = $row['Tittle'];
+
+            echo "<li><a href='castingCallpage.php'>".$_SESSION['filmTitle']."</a></li>";
+                
+          } 
+        }
+          
+        else {
+          echo "<label>No current casting calls.</label>";
+        }
+
+        $conn->close();
+        ?>
 
       </ul> 
     </nav>
