@@ -66,7 +66,7 @@
         <!-- <a href="editProfile.php">Settings</a> --> <!--Opens Profile Settings Page-->
         <a href=" ">My Profile</a>
         <a href="mainPage.php">Casting Calls</a>
-        <a href="directorView.php">Actor</a>
+        <a href="directorView.php">Actors</a>
     </div>
 
     <br/><br/><br/>

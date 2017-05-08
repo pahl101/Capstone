@@ -98,6 +98,7 @@
           } else {
               echo "No casting calls at this time.";
           }
+          $conn->close();
         ?>
 
         <!-- <div class="caja"><img src="movies/CivWar.jpg"/>

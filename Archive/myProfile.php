@@ -45,7 +45,7 @@
 
         <br/><center><h1>Welcome <?php echo $_SESSION['userName']; ?>!</h1></center>
 
-        <form action="newcastingphp.php" method="post">
+        <form action="profilephp.php" method="post">
 
         <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">

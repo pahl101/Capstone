@@ -39,14 +39,14 @@ if($_POST['submit'] == 1 )
   $roleEthnicities = $_POST['ethnicityInputs'];
   $roleAge = (int)$_POST['roleAge'];
 
-  if ($newGender == "male") {
-    $newGender = 1;
+  if ($roleGender == "male") {
+    $roleGender = 1;
   }
-  else if ($newGender == "female"){
-    $newGender = 0;
+  else if ($roleGender == "female"){
+    $roleGender = 0;
   }
   else {
-    $newGender = 2;
+    $roleGender = 2;
   }
 
   	

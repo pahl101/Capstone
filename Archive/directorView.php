@@ -80,7 +80,7 @@
               // output data of each row
               while($row = $result->fetch_assoc()) {
 
-                echo "<div class='caja'><img src='actors/cap.jpg'/>";
+                echo "<div class='caja'><img src='images/newUser.jpg'/>";
                 echo "<p>".$row['RefName']."</p>";
                 echo "<div class='shadow-3'></div>";
                 echo "</div>";

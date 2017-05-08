@@ -143,6 +143,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           }
 
           echo "</select><br><br>";
+          $conn->close();
           ?>
 
           <label for="startdate">Filming Date: </label>

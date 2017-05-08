@@ -135,7 +135,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
 
         </h2>
         <div class="w3-container">
-          <h5 class="w3-text-black"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Description: 
+          <h5 class="w3-text-black"><i class="fa fa-info-circle fa-fw w3-margin-right"></i>Description: 
             <?php 
             echo "<br/>";
             echo $_SESSION['synops'];
