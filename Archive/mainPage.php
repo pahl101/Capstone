@@ -101,7 +101,7 @@
           $conn->close();
         ?>
 
-        <!-- <div class="caja"><img src="movies/CivWar.jpg"/>
+        <div class="caja"><img src="movies/CivWar.jpg"/>
           <p>Captain America: Civil War</p>
           <div class="shadow-3"></div>
         </div>
@@ -213,7 +213,7 @@
 
         <div class="caja"><img src="movies/nightBefore.jpg"/>
           <p>The Night Before</p>
-        </div> -->
+        </div>
 
       </div>
 

@@ -141,17 +141,19 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
             echo $_SESSION['synops'];
             ?>
           </h5>
-          <h5 class="w3-text-black"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Film Date: 
-            <?php 
-            echo $_SESSION['filmDate'];
-            ?>
-          </h5>
+
           
           <hr>
           
 
         </div>
         <div class="w3-container">
+          <h5 class="w3-opacity"><b>Filming:</b></h5>
+          <h5 class="w3-text-black"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Film Date: 
+            <?php 
+            echo $_SESSION['filmDate'];
+            ?>
+          </h5>
           <h5 class="w3-opacity"><b>Auditions:</b></h5>
           <h5 class="w3-text-black"><i class="fa fa-calendar fa-fw w3-margin-right"></i>Date: 
             <?php 
@@ -174,13 +176,13 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
               $password = "864b7a39";
               $databasename = "se_group1_capstone";
 
-              $conn = new mysqli($servername, $username, $password, $databasename);
+              
               $hashed = $_SESSION['hashedEmail'];
+              $conn = new mysqli($servername, $username, $password, $databasename);
+              $resultRoles = $conn->query("CALL ReturnMyCastingRoles($hashed)");
+              if ($resultRoles->num_rows > 0) {
 
-              $results = $conn->query("CALL ReturnMyCastingRoles($hashed)");
-              if ($results->num_rows > 0) {
-
-                while($row = $results->fetch_assoc()) {
+                while($row = $resultRoles->fetch_assoc()) {
 
                   $_SESSION['roleName'] = $row['CharName'];
                   $_SESSION['roleDesc'] = $row['CharSynops'];

@@ -11,25 +11,53 @@ if($_POST['submit'] == 1 )
   	// Create connection
   	$conn = new mysqli($servername, $username, $password, $databasename);
 
-
-
-  // Check connection
-  if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
-  } 
-  //echo "Connected successfully". "<br>";
   	
   	// $profilePicture = $_POST['pic'];
   	// $_SESSION['profilePic']=$profilePicture;
-  	// $link = $_POST['video'];
-  	// $_SESSION['projectLink']=$link;
+  	$link = $_POST['reelLink'];
+  	$_SESSION['projectLink']=$link;
+// if(isset($_POST['submit'])){
+// $name = $_FILES['file']["name"];
+// //$size = $_FILES['file']['size']
+// //$type = $_FILES['file']['type']
 
+// $tmp_name = $_FILES['file']['tmp_name'];
+// $error = $_FILES['file']['error'];
+
+// if (isset ($name)) {
+//     if (!empty($name)) {
+
+//     $location = 'userUploads/';
+
+//     if  (move_uploaded_file($tmp_name, $location.$name)){
+//         echo 'Uploaded';    
+//         }
+
+//         } else {
+//           echo 'please choose a file';
+//           }
+//     }
+// }
+
+  	 // $userfile = $_FILE['userfile'];
+  	 // $_SESSION['profilePic'] = $newProfilePic;
   	 $newPhone = $_POST['phone'];
+
+
   	 $phone =preg_replace("/[^0-9]/", "", $newPhone);
   	 $_SESSION['phoneNumber']=(int) $phone;
 
-  	$newRole=(int)$_POST['student_role'];
-  	$_SESSION['role']=$newRole;
+  	$newRole=$_POST['student_role'];
+  	if ($newRole=='actor'){
+  		$_SESSION['role']=0;
+  	}
+  	else if ($newRole=='director') {
+  		$_SESSION['role']=1;
+  	}
+  	else {
+  		$_SESSION['role']=2;
+  	}
+  	
 
   	$newDescription = $_POST['description'];
   	$_SESSION['bio']=$newDescription;
@@ -40,7 +68,6 @@ if($_POST['submit'] == 1 )
 	$newMajor =$_POST['student_major'];
 	$_SESSION['major']=$newMajor;
 
-	$newAvailability =$_POST ['availability']; //actor
 	
 
 	$_SESSION['genres'] = $_POST['user_interest'];
@@ -54,7 +81,7 @@ if($_POST['submit'] == 1 )
 	$_SESSION['lowerAge'] = $lower; //actor
 	$_SESSION['upperAge'] = $upper; //actor
 
-
+echo $_SESSION['profilePic'];
 
 	if ($newGender == "Male") {
 		$gender = 1;
@@ -64,7 +91,7 @@ if($_POST['submit'] == 1 )
 	}
 
 	$_SESSION['gender'] = $gender;
-
+	$newAvailability = $_POST['available'];
 	if ($newAvailability == "Yes") {
 		$avail = 1;
 	}
@@ -76,8 +103,8 @@ if($_POST['submit'] == 1 )
 
 	//echo $_SESSION['hashedEmail'];
 
-	echo $_SESSION['role'];
-	echo $_SESSION['major'];
+	// echo $_SESSION['role'];
+	// echo $_SESSION['major'];
 	//echo $_SESSION['directorGenre'];
 	//echo $_SESSION['directorLvl'];
 
@@ -100,7 +127,14 @@ if($_POST['submit'] == 1 )
 	}
 	$_SESSION['genres']=$allGenre;
 
+  	$conn = new mysqli($servername, $username, $password, $databasename);
 
+
+
+  // Check connection
+  if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+  }
 
 //--------------------------------------------------------------------
 // STORE PROFILE INFORMATION
@@ -117,9 +151,8 @@ if($_POST['submit'] == 1 )
 	$res2->execute();
 
 	$res2->close();
-	$aphone = 1231231234;
-	$res3 = $conn->prepare("CALL AddTest3(?,?,?,?)");
-	$res3->bind_param('issi',$_SESSION['hashedEmail'], $_SESSION['userName'], $_SESSION['userEmail'], $_SESSION['phoneNumber']);
+	$res3 = $conn->prepare("CALL AddTest3(?,?,?,?,?)");
+	$res3->bind_param('issis',$_SESSION['hashedEmail'], $_SESSION['userName'], $_SESSION['userEmail'], $_SESSION['phoneNumber'],$_SESSION['projectLink']);
 	$res3->execute();
 
 	$res3->close();
@@ -164,8 +197,8 @@ if($_POST['submit'] == 1 )
 
 	
 
-	header('Location: profilePage.php');
-
+	 
+header('Location: profilePage.php');
 
 	$conn->close();
 
@@ -192,6 +225,7 @@ if($_POST['submit'] == 1 )
 		$resultStudent->execute();
 
 		$resultStudent->close();
+
 
 	$conn->close();
 

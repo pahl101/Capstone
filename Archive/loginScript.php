@@ -18,7 +18,6 @@ if($_POST['pressed2'] == 1 )
   } 
   //echo "Connected successfully". "<br>";
 //USE THE CODE BELOW FOR THE HASHING!!!!!!
-
 	$result = $conn->prepare("CALL LogIN(?,?)");
 
 	$result->bind_param('is', $hashedPass, $password);

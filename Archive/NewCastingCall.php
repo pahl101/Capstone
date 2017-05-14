@@ -122,12 +122,6 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
 
             // Create connection
             $conn = new mysqli($servername, $username, $password, $databasename);
-            
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            } 
-            //echo "Connected successfully". "<br>";
 
             echo "<label for='prodlevel'>Level of Production:</label><br>";
             echo "<select id='prodlevel' name='prodlevel' required>";
@@ -154,7 +148,9 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
 
 
           <label for="auditiondate">Audition Date:</label>
-          <input type="date" id="auditiondate" name="auditiondate" min="<?php echo date("Y-m-d"); ?>" required><br><br>
+          
+          <input type="date" id="auditiondate" name="auditiondate" min="<?php echo date("Y-m-d");?>" required><br>
+          Time:<input type="time" name="auditiontime"><br><br>
 
           <br><br><label><b> Please specify all roles you are currently casting for. </b></label><br><br>
 
@@ -191,7 +187,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           +"<option value='other'>Other</option>"
           +"</select><br><br>"
           +"<label>Role age:</label><br>"
-          +"<br><input type='int' name='roleAge' min='1' max='100' required></input><br>"
+          +"<br><input type='int' name='roleAge' min='1' max='100'></input><br>"
 
           ;
                       document.getElementById(divName).appendChild(newdiv);
@@ -229,7 +225,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
                     </select><br><br>
 
                     <label>Role age:</label><br>
-                    <input type="int" name="roleAge" min="1" max="100" required></input><br><br>
+                    <input type="int" name="roleAge" min="1" max="100"></input><br><br>
                 </div>
                <input buttonblock type="button" value="Add another role" onClick="addInput('dynamicInput');">
           </form> 

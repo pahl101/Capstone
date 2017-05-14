@@ -92,6 +92,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
 
             echo "<label>Please enter the following basic information about yourself:</label><br><br>";
 
+            echo "<label>Choose your profile picture:</label><br>";
+            echo "<form action='profilephp.php' method='POST' enctype='multipart/form-data'>
+                  <input type='file' name='file'><br><br>
+                  </form>";
+
+
             echo "<br><br><label for='student'>Major:</label><br>";
             echo "<select id='student' name='student_major' required>";
             echo "<b><option selected disabled>Select your major:</option></b>";
@@ -103,6 +109,7 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
                  echo "<option value='" . $row['Major'] . "''>". $row['Major'] . "</option>";
             } 
           }
+          $conn->close();
           //$result->close();
           echo "<br>";
           echo "</select><br>";
@@ -117,18 +124,30 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
           echo "<label>Phone number: (xxx)xxx-xxxx </label><br>";
             echo "<input pattern='[[\(]\d{3}[\)]\d{3}[\-]\d{4}' type='int' name='phone' placeholder='(xxx)xxx-xxxx'required><br><br>";
 
+          echo "<label>Link to your reel.</label><br>";
+          echo "<input type='url' name='reelLink'><br><br>";
+
           echo "<label for='description'>About Me:</label><br>";
           echo "<textarea name='description' id='description' cols='80' rows='10' required></textarea><br><br>";
 
           echo "<br><label for='student'>Are you an Actor, Director, or Both?:</label><br>";
           echo "<select id='student' name='student_role' required>";
             echo "<option selected disabled>Select actor, director, or both:</option>";
-            echo "<option value='0'>Actor</option>";
-            echo "<option value='1'>Director</option>";
-            echo "<option value='2'>Both</option>";
+            echo "<option value='actor'>Actor</option>";
+            echo "<option value='director'>Director</option>";
+            echo "<option value='both'>Both</option>";
           echo "</select><br><br><br>";
 
           echo "<b><label>Enter the following information about acting:</label></b><br><br>";
+
+
+          echo "<br><label for='student'>Are you currently available for a role?:</label><br>";
+          echo "<select id='student' name='available' required>";
+            echo "<option selected disabled>Available:</option>";
+            echo "<option value='Yes'>Yes</option>";
+            echo "<option value='No'>No</option>";
+          echo "</select><br><br><br>";
+
         
           echo "<label>Input your preferred age range:</label><br>";
           echo "Lowest age:<input type='int' name='lower' min='1' max='100' required></input><br>";
@@ -136,7 +155,23 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
 
 
           echo "<br><br><b><label>Genres you are interested to act in:</label></b><br>";
-
+          ?>
+          <script language="JavaScript">
+          function toggle(source) {
+            checkboxes = document.getElementsByName('user_interest[]');
+            for(var i=0, n=checkboxes.length;i<n;i++) {
+              checkboxes[i].checked = source.checked;
+            }
+          }
+          function toggle2(source) {
+            checkboxes = document.getElementsByName('user_prod_interest[]');
+            for(var i=0, n=checkboxes.length;i<n;i++) {
+              checkboxes[i].checked = source.checked;
+            }
+          }
+          </script>
+          <input type="checkbox" onClick="toggle(this)" /> Select All<br/>
+          <?php
           $conn = new mysqli($servername, $username, $password, $databasename);
           $result = $conn->query("CALL ReturnGenre()");
           if ($result->num_rows > 0) {
@@ -146,11 +181,12 @@ html,body,h1,h2,h3,h4,h5,h6 {font-family: "Verdana", sans-serif}
                  echo "<input type='checkbox' id=' " . $row['GenreName'] . "' value= '" . $row['GenreName']  . "' name='user_interest[]'><label class='light' for='singer'>" . $row['GenreName'] ."</label><br>";
             } 
           }
+          $conn->close();
           //$genreRes->close();
           echo "<br>";
 
           echo "<b><label>Production levels you are interested in acting for:</label></b><br>";
-          
+          echo "<input type='checkbox' onClick='toggle2(this)' /> Select All<br/>";
           $conn = new mysqli($servername, $username, $password, $databasename);
           $result = $conn->query("CALL ReturnAllProdLvL()");
           if ($result->num_rows > 0) {
