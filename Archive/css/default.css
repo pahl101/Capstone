@@ -356,6 +356,32 @@ nav ul li a
   padding: 10px 0;
 }
 
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #990026; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+
 /* Add a black background color to the top navigation */
 .topnav {
     background-color: #333;
@@ -416,6 +442,7 @@ nav ul li a
 
 .rejilla 
 {
+	position: relative;
   padding: 1em 3em;
   -webkit-column-count: 1;
      -moz-column-count: 1;
